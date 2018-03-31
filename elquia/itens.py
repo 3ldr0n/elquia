@@ -16,6 +16,29 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+class Item:
+
+    def __init__(self, nome, valor, equipavel, descricao):
+        self.nome = nome
+        self.valor = valor
+        self.equipavel = equipavel
+        self.descricao = descricao
+
+
+class Arma(Item):
+
+    def __init__(self, nome, valor, equipavel, dano, descricao):
+        self.dano = dano
+        super().__init__(nome, valor, equipavel, descricao)
+
+
+class Pocao(Item):
+
+    def __init__(self, nome, valor, equipavel, efeito, descricao):
+        self.efeito = efeito
+        super().__init__(nome, valor, equipavel, descricao)
+
+
 itens = {
      'adaga': {
         'nome': 'Adaga',

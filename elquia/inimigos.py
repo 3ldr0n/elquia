@@ -16,6 +16,40 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+class Inimigo:
+
+    def __init__(self, nome, dano, hp):
+        self.nome = nome
+        self.dano = dano
+        self.hp = hp
+
+
+class RatoGigante(Inimigo):
+
+    def __init__(self):
+        super().__init__(
+                         nome="Rato gigante",
+                         dano=9,
+                         hp=100)
+
+
+class CarrascoDoRei(Inimigo):
+
+    def __init__(self):
+        super().__init__(
+                         nome="Carrasco do rei",
+                         dano=13,
+                         hp=150)
+
+
+class Basilisco(Inimigo):
+
+    def __init__(self):
+        super().__init__(
+                         nome="Basilisco",
+                         dano=30,
+                         hp=50)
+
 inimigos = {
     "rato_gigante": {
         'nome' : 'Rato gigante',
