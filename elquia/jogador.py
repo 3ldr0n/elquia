@@ -24,9 +24,4 @@ class Jogador:
 
 
     def __str__(self):
-        print("Nome: {}".format(self.nome))
-        print("Classe: {}".format(self.classe))
-        print("Vida: {}".format(self.hp))
-        print("Mana: {}".format(self.mp))
-        print("Força: {}".format(self.forca))
-        print("Pontos: {}".format(self.pontos))
+        return "Nome: {}\nPontos: {}".format(self.nome, self.pontos)

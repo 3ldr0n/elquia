@@ -24,6 +24,11 @@ class Magia:
         self.descricao = descricao
         self.mp = mp
 
+
+    def __str__(self):
+        return "Nome: {}\nDano: {}\nDescrição: {}\nMana: {}".format(
+                                self.nome, self.dano, self.descricao, self.mp)
+
 magias = {
     'bola_de_fogo': {
         'nome': 'Bola de fogo',
