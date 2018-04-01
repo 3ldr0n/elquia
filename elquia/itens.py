@@ -25,6 +25,11 @@ class Item:
         self.descricao = descricao
 
 
+    def __str__(self):
+        return "Nome: {}\nValor: {}\nDescrição: {}".format(
+                                        self.nome, self.valor, self.descricao)
+
+
 class Arma(Item):
 
     def __init__(self, nome, valor, equipavel, dano, descricao):
