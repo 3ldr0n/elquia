@@ -23,6 +23,9 @@ class Inimigo:
         self.dano = dano
         self.hp = hp
 
+    def __str__(self):
+        return "Nome: {}\nHP: {}\nDano: {}".format(self.nome, self.hp, self.dano)
+
 
 class RatoGigante(Inimigo):
 
@@ -49,6 +52,10 @@ class Basilisco(Inimigo):
                          nome="Basilisco",
                          dano=30,
                          hp=50)
+
+rato = RatoGigante()
+
+print(rato)
 
 inimigos = {
     "rato_gigante": {
