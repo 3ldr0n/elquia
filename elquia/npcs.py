@@ -16,6 +16,40 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+class NPC:
+
+    def __init__(self, nome, dano, hp, mp):
+        self.nome = nome
+        self.dano = dano
+        self.hp = hp
+        self.mp = mp
+
+
+class Cozinheiro(NPC):
+
+    def __init__(self):
+        super().__init__(
+                         nome="",
+                         dano=0,
+                         hp=1,
+                         mp=450)
+
+    def esta_vivo(self):
+        if self.hp <= 0:
+            return False
+        return True
+
+
+class Samantha(NPC):
+
+    def __init__(self):
+        self.solta = False
+        super().__init__(
+                         nome="Samantha",
+                         dano=0,
+                         hp=1,
+                         mp=0)
+
 npcs = {
     "cozinheiro": {
         "nome": "Cozinheiro",
