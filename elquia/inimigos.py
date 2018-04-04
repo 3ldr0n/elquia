@@ -23,6 +23,11 @@ class Inimigo:
         self.dano = dano
         self.hp = hp
 
+    def esta_vivo(self):
+        if self.hp >= 0:
+            return False
+        return True
+
     def __str__(self):
         return "Nome: {}\nHP: {}\nDano: {}".format(self.nome, self.hp, self.dano)
 
