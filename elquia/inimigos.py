@@ -16,6 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+
 class Inimigo:
 
     def __init__(self, nome, dano, hp):
@@ -29,7 +30,8 @@ class Inimigo:
         return True
 
     def __str__(self):
-        return "Nome: {}\nHP: {}\nDano: {}".format(self.nome, self.hp, self.dano)
+        return "Nome: {}\nHP: {}\nDano: {}".format(
+                self.nome, self.hp, self.dano)
 
 
 class RatoGigante(Inimigo):
@@ -58,34 +60,35 @@ class Basilisco(Inimigo):
                          dano=30,
                          hp=50)
 
+
 rato = RatoGigante()
 
 print(rato)
 
 inimigos = {
     "rato_gigante": {
-        'nome' : 'Rato gigante',
-        'dano' : 8,
+        'nome': 'Rato gigante',
+        'dano': 8,
         'hp': 100
     },
     "rato_gigante_refeitorio": {
-        'nome' : 'Rato gigante',
-        'dano' : 9,
+        'nome': 'Rato gigante',
+        'dano': 9,
         'hp': 100
     },
     "carrasco_do_rei_1": {
-        'nome' : 'Carrasco do rei',
-        'dano' : 13,
-        'hp' : 150
+        'nome': 'Carrasco do rei',
+        'dano': 13,
+        'hp': 150
     },
     "carrasco_do_rei_2": {
-        'nome' : 'Carrasco do rei',
-        'dano' : 13,
-        'hp' : 150
+        'nome': 'Carrasco do rei',
+        'dano': 13,
+        'hp': 150
     },
     "basilisco": {
-        'nome' : 'basilisco',
-        'dano' : 30,
-        'hp' : 50
+        'nome': 'basilisco',
+        'dano': 30,
+        'hp': 50
     }
 }

@@ -26,6 +26,7 @@ from salas import salas
 
 DIRETORIO_ROOT = os.path.dirname(os.path.abspath(__file__))
 
+
 def abertura():
     """Imprime o texto de abertura. """
     columns = os.get_terminal_size().columns
@@ -137,7 +138,7 @@ def pegar(jogador, item):
                     jogador['inventario'].append(item)
                     del jogador['sala_atual']['itens'][index]
             print("Você pegou {}".format(item['nome']))
-    except:
+    except IndexError:
         print("Não há item para ser pego.")
 
 
@@ -157,8 +158,8 @@ def ver_inventario(jogador, return_itens=False):
 
 
 def ver_item(jogador, item):
-    for itens in jogador['inventario']:
-        if itens['nome'] == item:
+    for itens_no_inventario in jogador['inventario']:
+        if itens_no_inventario['nome'] == item:
             print(item)
 
 
@@ -169,44 +170,6 @@ def ver_estatistica(jogador):
     print("Mana: {}".format(jogador['mp']))
     print("Força: {}".format(jogador['forca']))
     print("Pontos: {}".format(jogador['pontos']))
-
-def criar_jogador():
-    nome = input("Qual o seu nome: ")
-    classe, hp, mp, forca = escolha_da_classe()
-
-    jogador = {
-        'nome': nome,
-        'classe': classe,
-        'hp': hp,
-        'maxhp': hp,
-        'mp': mp,
-        'maxmp': mp,
-        'forca': forca,
-        'inventario': [itens["pocao_de_vida"],itens["pocao_de_vida"]],
-        'sala_atual': '',
-        'vitoria': False,
-        'pontos': 0,
-        'item_equipado': itens['faca']
-    }
-
-    # Mago começa com magias no inventário.
-    if classe == "mago":
-        jogador['inventario'].append(magias['bola_de_fogo'])
-        jogador['inventario'].append(magias['abraco_gelido'])
-        jogador['inventario'].append(magias['nevoa_acida'])
-        jogador['inventario'].append(itens['pocao_de_mana'])
-        jogador['inventario'].append(itens['pocao_de_mana'])
-    # Guerreiro começa com uma espada no iventário.
-    elif classe == 'guerreiro':
-        jogador['inventario'].append(itens['espada'])
-    # Ladino começa com uma magia e uma adaga no iventário.
-    elif classe == 'ladino':
-        jogador['inventario'].append(magias['mutilar'])
-        jogador['inventario'].append(itens['adaga'])
-        jogador['inventario'].append(itens['pocao_de_mana'])
-        jogador['inventario'].append(itens['pocao_de_mana'])
-
-    return jogador
 
 
 def ajuda(comandos):
@@ -225,6 +188,7 @@ def ver_direcao(sala, direcao):
 def ver_sala(sala):
     print("{}".format(sala["descricao"]))
 
+
 def equipar_item(jogador, item):
     if len(jogador['inventario']) > 0:
         item = mudar_nome_utf8(item)
@@ -232,7 +196,7 @@ def equipar_item(jogador, item):
             print("Este item já está equipado.")
             return None
 
-        if item['equipavel'] == False:
+        if item['equipavel'] is False:
             print("Item inequipável")
             return None
 
@@ -290,7 +254,8 @@ def batalha(jogador, inimigo):
                                             index, item['nome'], item['dano']))
                 elif item['tipo'] == 'pocao':
                     print("{}: {}, Efeito: {}".format(
-                                            index, item['nome'], item['efeito']))
+                                            index,
+                                            item['nome'], item['efeito']))
                 else:
                     print("{}: {}, Dano: {}, Mana: {}".format(
                                             index, item['nome'], item['dano'],
@@ -301,10 +266,10 @@ def batalha(jogador, inimigo):
         arma_escolhida = ''
         while arma_escolhida not in numeros_possiveis:
             try:
-                arma_escolhida = int(input("\nEscolha sua forma de ataque[número]: "))
-            except:
+                arma_escolhida = int(input(
+                        "\nEscolha sua forma de ataque[número]: "))
+            except ValueError:
                 print("O valor tem que corresponder com um dos itens.")
-
 
         stats_arma = list(enumerate(jogador['inventario']))[arma_escolhida][1]
 
@@ -324,7 +289,8 @@ def batalha(jogador, inimigo):
         else:
             try:
                 efeito = stats_arma['efeito']
-                # Se a vida do jogador for ficar maior do que a vida maxima dele.
+                # Se a vida do jogador for ficar maior do que a
+                # vida maxima dele.
                 if efeito == '+50hp':
                     if (jogador['hp'] + 50) > jogador['maxhp']:
                         jogador['hp'] = jogador['maxhp']
@@ -340,14 +306,12 @@ def batalha(jogador, inimigo):
                         jogador['mp'] += 50
                         print("Restorado 50 pontos de mana.")
 
-
                 # Deleta a poção do inventário depois de usuada.
                 del jogador['inventario'][arma_escolhida]
                 dano_escolhido = 0
             except:
                 print("\nVocê escolhe lutar desarmado...")
                 dano_escolhido = 5
-
 
         dano = jogador['forca'] * random.uniform(0.0, 0.5)
         dano_do_jogador = dano_escolhido + dano
@@ -357,7 +321,8 @@ def batalha(jogador, inimigo):
         jogador['hp'] -= dano_do_inimigo
         inimigo['hp'] -= dano_do_jogador
 
-        print("\nVocê deu {:.1f} de dano, e sofreu {}".format(dano_do_jogador,dano_do_inimigo))
+        print("\nVocê deu {:.1f} de dano, e sofreu {}".format(
+            dano_do_jogador, dano_do_inimigo))
         print("Você possui {:.1f} de vida".format(jogador['hp']))
         print("O inimigo possui {:.1f}".format(inimigo['hp']))
         print("Você possui {} de mana".format(jogador['mp']))

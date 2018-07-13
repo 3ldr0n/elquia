@@ -16,6 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+
 class Item:
 
     def __init__(self, nome, valor, equipavel, descricao):
@@ -23,7 +24,6 @@ class Item:
         self.valor = valor
         self.equipavel = equipavel
         self.descricao = descricao
-
 
     def __str__(self):
         return "Nome: {}\nValor: {}\nDescrição: {}".format(
@@ -45,14 +45,13 @@ class Pocao(Item):
 
 
 itens = {
-     'adaga': {
+    'adaga': {
         'nome': 'Adaga',
         'dano': 6.5,
         'valor': 0,
         'tipo': 'arma',
         'equipavel': False
     },
-
     'espada': {
         'nome': 'Espada',
         'dano': 10,
@@ -60,7 +59,6 @@ itens = {
         'tipo': 'arma',
         'equipavel': False
     },
-
     'faca': {
         'nome': 'Faca',
         'dano': 7.5,

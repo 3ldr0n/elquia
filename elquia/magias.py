@@ -16,6 +16,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 """
 
+
 class Magia:
 
     def __init__(self, nome, dano, descricao, mp):
@@ -24,10 +25,10 @@ class Magia:
         self.descricao = descricao
         self.mp = mp
 
-
     def __str__(self):
         return "Nome: {}\nDano: {}\nDescrição: {}\nMana: {}".format(
                                 self.nome, self.dano, self.descricao, self.mp)
+
 
 magias = {
     'bola_de_fogo': {

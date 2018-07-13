@@ -8,7 +8,6 @@ class Jogador:
         self.sala_atual = 'placeholder'
         self.item_equipado = None
 
-
     def ver_inventario(self, retorna_itens=False):
         if not retorna_itens:
             print("\nTotal de itens: {}".format(len(self.inventario)))
@@ -21,7 +20,6 @@ class Jogador:
 
         if retorna_itens:
             return nome_dos_itens
-
 
     def __str__(self):
         return "Nome: {}\nPontos: {}".format(self.nome, self.pontos)
